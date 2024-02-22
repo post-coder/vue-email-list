@@ -11,14 +11,29 @@
 
     <div id="app" class="container py-5">
         <h1 class="mb-4">
-            Vue Email
+            Vue GPT
         </h1>
 
-        <ul v-if="mails.length == 10">
-            <li v-for="currentMail in mails">
-                {{currentMail}}
-            </li>
-        </ul>
+        
+        <div class="input-group mb-3">
+            <input  
+                name="message" 
+                type="text" 
+                v-model="message" 
+                class="form-control" 
+                placeholder="Messaggio" 
+                @keyup.enter="generate()"
+            >
+            <button class="btn btn-outline-secondary" type="button" @click="generate()">Button</button>
+        </div>
+
+        <div v-if="!isLoading">
+            <strong>GPT: </strong>
+            <p v-html="result"></p>
+        </div>
+        <div v-else>
+            Caricamento...
+        </div>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
