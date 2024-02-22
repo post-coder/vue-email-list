@@ -14,7 +14,7 @@
             Vue Email
         </h1>
 
-        <ul>
+        <ul v-if="mails.length == 10">
             <li v-for="currentMail in mails">
                 {{currentMail}}
             </li>
